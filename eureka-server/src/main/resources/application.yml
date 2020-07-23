@@ -1,0 +1,23 @@
+#spring.application.name=eureka-server
+##management.endpoints.jmx.exposure.include=*
+##management.endpoints.web.exposure.include=*
+##management.endpoint.health.show-details=always
+### spring cloud access&secret config
+### 可以访问如下地址查看: https://usercenter.console.aliyun.com/#/manage/ak
+##alibaba.cloud.access-key=****
+##alibaba.cloud.secret-key=****
+
+server:
+  port: 8761 #指定该Eureka实例的端口
+
+eureka:
+  instance:
+    hostname: localhost #设置当前实例的主机名称
+  client:
+    registerWithEureka: false #禁止注册自身
+    fetchRegistry: false  #该服务未注册到其他注册中心，关闭从注册中心拉取服务列表。
+    serviceUrl:  #服务注册中心地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+
